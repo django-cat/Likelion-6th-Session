@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>메인 페이지</title>
+</head>
+<body>
+  {% for post in posts %}
+    <div>제목: {{post.title}}</div>
+    <div>날짜: {{post.date}}</div>
+    <div>내용: {{post.content}}</div>
+    {% if post.image %}
+      <div><img src="{{post.image.url}}" width="300rem"></div>
+    {% else %}  
+      <div>이미지가 없습니다.</div>
+    {% endif %}
+    <a href="{% url 'update' post.id %}">수정</a>
+    <a href="{% url 'delete' post.id %}">삭제</a>
+    <hr>
+  {% endfor %}
+</body>
+</html>
